@@ -1,17 +1,17 @@
-import java.time.ZonedDateTime;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Pedido {
     
     private Funcionario funcionario;
     private Departamento departamento;
-    private ZonedDateTime dataAbertura;
-    private ZonedDateTime dataConclusao;
+    private LocalDate dataAbertura;
+    private LocalDate dataConclusao;
     private String status;
     private ArrayList<Item> itens;
     private double valorTotal;
 
-    public Pedido(Funcionario funcionario, Departamento departamento, ZonedDateTime dataAbertura) {
+    public Pedido(Funcionario funcionario, Departamento departamento, LocalDate dataAbertura) {
         this.funcionario = funcionario;
         this.departamento = departamento;
         this.dataAbertura = dataAbertura;
@@ -37,11 +37,11 @@ public class Pedido {
         return departamento;
     }
 
-    public ZonedDateTime getDataAbertura() {
+    public LocalDate getDataAbertura() {
         return dataAbertura;
     }
 
-    public ZonedDateTime getDataConclusao() {
+    public LocalDate getDataConclusao() {
         return dataConclusao;
     }
 
