@@ -1,10 +1,60 @@
+import java.io.BufferedReader;
+import java.io.PrintStream;
 import java.util.Scanner;
+import java.io.FileReader;
 
 public class SistemaControle {
     
-    private Scanner in;
+    private Scanner in = null;
     private GerenciaPedidos gerenciaPedidos;
-    private Usuario usuario;
+    private GerenciaDepartamentos gerenciaDepartamentos;
+    private GerenciaUsuarios gerenciaUsuarios;
+    private Usuario usuario = null;
+
+    public SistemaControle() {
+        try {
+            BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosentrada.txt"));
+            in = new Scanner(streamEntrada);
+        }catch(Exception e) {
+            System.out.println(e);
+        }
+
+        this.gerenciaDepartamentos = new GerenciaDepartamentos();
+        this.gerenciaPedidos = new GerenciaPedidos();
+        this.gerenciaUsuarios = new GerenciaUsuarios();
+    }
+
+    public void executa() {
+        carregaDados();
+        restauraEntrada();
+        Usuario u = null;
+        while(u == null) {
+            System.out.println("Digite o nome do usuário que está utilizando o sistema");
+            String nome = in.nextLine();
+            u = gerenciaUsuarios.pesquisaUsuario(nome);
+            if(u == null) {
+                System.out.println("Usuário não encontrado digite novamente");
+            }
+        }
+        this.usuario = u;
+        loop();
+    }
+
+    private void loop() {
+        
+    }
+
+    private void menu() {
+        
+    }
+
+    private void carregaDados() {
+
+    }
+
+    private void restauraEntrada() {
+        in = new Scanner(System.in);
+    }
 
 
     private void AprovaPedido() {
