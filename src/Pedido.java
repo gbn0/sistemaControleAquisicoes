@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class Pedido {
     
+    private int codigo;
     private Funcionario funcionario;
     private Departamento departamento;
     private LocalDate dataAbertura;
@@ -11,7 +12,8 @@ public class Pedido {
     private ArrayList<Item> itens;
     private double valorTotal;
 
-    public Pedido(Funcionario funcionario, Departamento departamento, LocalDate dataAbertura) {
+    public Pedido(int codigo, Funcionario funcionario, Departamento departamento, LocalDate dataAbertura) {
+        this.codigo = codigo;
         this.funcionario = funcionario;
         this.departamento = departamento;
         this.dataAbertura = dataAbertura;
@@ -29,6 +31,9 @@ public class Pedido {
         return valor;
     }
 
+    public int getCodigo() {
+        return codigo;
+    }
     public Funcionario getFuncionario() {
         return funcionario;
     }
@@ -55,6 +60,15 @@ public class Pedido {
 
     public double getValorTotal() {
         return valorTotal;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    @Override
+    public String toString() {
+        return "Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura;
     }
 
     
