@@ -79,4 +79,17 @@ public class GerenciaPedidos {
         }
     }
 
+    public ArrayList<Pedido> listarPedidoEntreDatas(LocalDate dataInicio, LocalDate dataFinal) {
+        ArrayList<Pedido> aux = new ArrayList<>();
+
+        for (Pedido p : pedidos) {
+            if (p.getDataAbertura().isAfter(dataInicio) && p.getDataAbertura().isBefore(dataFinal)) {
+                aux.add(p);
+            }
+        }
+
+        return aux;
+
+    }
+
 }
