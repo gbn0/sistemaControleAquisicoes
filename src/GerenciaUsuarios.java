@@ -11,5 +11,13 @@ public class GerenciaUsuarios {
         usuarios.add(u);
     }
 
-    //pesquisaUsuario pelo id e nome
+    public Usuario pesquisaUsuarioId (int id) {
+        Usuario aux = null;
+        for (Usuario u : usuarios) {
+            if (u.getId() == id) {
+                aux = u;
+            }
+        }
+        return aux;
+    }
 }
