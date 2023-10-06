@@ -20,4 +20,14 @@ public class GerenciaUsuarios {
         }
         return aux;
     }
+
+    public Usuario pesquisaUsuarioNome (String nome) {
+        Usuario aux = null;
+        for (Usuario u : usuarios) {
+            if (u.getNome().equals(nome)) {
+                aux = u;
+            }
+        }
+        return aux;
+    }
 }
