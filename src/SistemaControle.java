@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
 
@@ -101,4 +102,12 @@ public class SistemaControle {
             }
         }
     }
+    public void listaUsuarios(){
+        ArrayList<Usuario> usuarios = gerenciaUsuarios.getUsuarios();
+        for(Usuario u : usuarios){
+            System.out.println(u);
+
+        }
+    }
+
 }
