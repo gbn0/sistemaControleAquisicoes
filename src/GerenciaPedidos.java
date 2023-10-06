@@ -64,7 +64,7 @@ public class GerenciaPedidos {
         ArrayList<Pedido> aux = new ArrayList<>();
 
         for (Pedido p : pedidos) {
-            if (p.getDataAbertura().isAfter(dataInicio) || p.getDataAbertura().isBefore(dataFinal)) {
+            if (p.getDataAbertura().isAfter(dataInicio) && p.getDataAbertura().isBefore(dataFinal)) {
                 aux.add(p);
             }
         }
