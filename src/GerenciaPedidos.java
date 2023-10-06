@@ -120,4 +120,13 @@ public class GerenciaPedidos {
         return valorTotal / count;
     }
 
+    public Pedido pesquisaPedido(int codigo) {
+        Pedido aux = null;
+        for (Pedido p : pedidos) {
+            if (p.getCodigo() == codigo) {
+                aux = p;
+            }
+        }
+        return aux;
+    }
 }
