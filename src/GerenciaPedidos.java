@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 
 public class GerenciaPedidos {
@@ -60,20 +61,20 @@ public class GerenciaPedidos {
         return (value / total) * 100;
     }
 
-    public void verDetalhesPedidoMaiorValorAberto () {
+    public void verDetalhesPedidoMaiorValorAberto() {
         double maior = pedidos.get(0).getValorTotal();
         for (Pedido p : pedidos) {
             if (p.getStatus().equals("Aberto")) {
                 if (p.getValorTotal() > maior) {
                     System.out.println("Detalhes do pedido de maior valor ainda aberto:");
-                    System.out.println("Código: "+p.getCodigo());
-                    System.out.println("Funcionário: "+p.getFuncionario());
-                    System.out.println("Departamento: "+p.getDepartamento());
-                    System.out.println("Data abertura: "+p.getDataAbertura());
-                    System.out.println("Data conclusão: "+p.getDataConclusao());
-                    System.out.println("Status: "+p.getStatus());
-                    System.out.println("Itens: "+p.getItens());
-                    System.out.println("Valor total: "+p.getValorTotal());
+                    System.out.println("Código: " + p.getCodigo());
+                    System.out.println("Funcionário: " + p.getFuncionario());
+                    System.out.println("Departamento: " + p.getDepartamento());
+                    System.out.println("Data abertura: " + p.getDataAbertura());
+                    System.out.println("Data conclusão: " + p.getDataConclusao());
+                    System.out.println("Status: " + p.getStatus());
+                    System.out.println("Itens: " + p.getItens());
+                    System.out.println("Valor total: " + p.getValorTotal());
                 }
             }
         }
@@ -90,6 +91,33 @@ public class GerenciaPedidos {
 
         return aux;
 
+    }
+
+    public int totalPedidos30Dias() {
+        int aux = 0;
+
+        for (Pedido p : pedidos) {
+            if (p.getDataAbertura().isAfter(ZonedDateTime.now().toLocalDate().minusDays(30))) {
+                aux++;
+            }
+        }
+
+        return aux;
+    }
+
+    public double valorMedioPedidos30Dias() {
+
+        int count = 0;
+        double valorTotal = 0;
+
+        for (Pedido p : pedidos) {
+            if (p.getDataAbertura().isAfter(ZonedDateTime.now().toLocalDate().minusDays(30))) {
+                count++;
+                valorTotal += p.getValorTotal();
+            }
+        }
+
+        return valorTotal / count;
     }
 
 }
