@@ -60,4 +60,23 @@ public class GerenciaPedidos {
         return (value / total) * 100;
     }
 
+    public void verDetalhesPedidoMaiorValorAberto () {
+        double maior = pedidos.get(0).getValorTotal();
+        for (Pedido p : pedidos) {
+            if (p.getStatus().equals("Aberto")) {
+                if (p.getValorTotal() > maior) {
+                    System.out.println("Detalhes do pedido de maior valor ainda aberto:");
+                    System.out.println("Código: "+p.getCodigo());
+                    System.out.println("Funcionário: "+p.getFuncionario());
+                    System.out.println("Departamento: "+p.getDepartamento());
+                    System.out.println("Data abertura: "+p.getDataAbertura());
+                    System.out.println("Data conclusão: "+p.getDataConclusao());
+                    System.out.println("Status: "+p.getStatus());
+                    System.out.println("Itens: "+p.getItens());
+                    System.out.println("Valor total: "+p.getValorTotal());
+                }
+            }
+        }
+    }
+
 }
