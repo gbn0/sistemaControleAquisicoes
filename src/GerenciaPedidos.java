@@ -60,4 +60,15 @@ public class GerenciaPedidos {
         return (value / total) * 100;
     }
 
+    public void verDetalhesPedidoMaiorValorAberto () {
+        double maior = pedidos.get(0).getValorTotal();
+        for (Pedido p : pedidos) {
+            if (p.getStatus().equals("Aberto")) {
+                if (p.getValorTotal() > maior) {
+                    
+                }
+            }
+        }
+    }
+
 }
