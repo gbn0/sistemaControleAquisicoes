@@ -105,4 +105,19 @@ public class GerenciaPedidos {
         return aux;
     }
 
+    public double valorMedioPedidos30Dias() {
+
+        int count = 0;
+        double valorTotal = 0;
+
+        for (Pedido p : pedidos) {
+            if (p.getDataAbertura().isAfter(ZonedDateTime.now().toLocalDate().minusDays(30))) {
+                count++;
+                valorTotal += p.getValorTotal();
+            }
+        }
+
+        return valorTotal / count;
+    }
+
 }
