@@ -1,5 +1,11 @@
+import java.util.ArrayList;
 
-    //metodo para buscar pedidos pela descrição qnd a classe for implementada 
+public class GerenciaPedidos {
+    private ArrayList<Pedido> pedidos; 
+    public GerenciaPedidos(){
+        pedidos = new ArrayList<>(pedidos);
+    }
+
     public ArrayList<Pedido> buscaPedidoDesc(String descricao){
         ArrayList<Pedido> pedidoDescricao = new ArrayList<Pedido>();   
         for (Pedido p : pedidos){
@@ -13,5 +19,15 @@
         return pedidoDescricao;
     }
 
-    
-
+    public ArrayList<Pedido> buscaPedidoFunc(int id){
+        ArrayList<Pedido> pedidoFuncionario = new ArrayList<Pedido>();
+        for (Pedido p : pedidos){
+                if(p.getFuncionario().getId() == id){
+                    pedidoFuncionario.add(p);
+                }
+            }
+            return pedidoFuncionario;
+        }
+        
+        
+    }
