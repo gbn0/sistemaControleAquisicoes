@@ -129,4 +129,12 @@ public class GerenciaPedidos {
         }
         return aux;
     }
+    public boolean excluiPedido(int codigo){
+        Pedido p = pesquisaPedido(codigo);
+        if(p != null){
+            pedidos.remove(p);
+            return true;
+        } 
+        return false;
+    }
 }

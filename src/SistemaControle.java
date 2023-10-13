@@ -123,10 +123,4 @@ public class SistemaControle {
 
         }
     }
-    public boolean excluiPedido(int codigo){
-        Pedido p = gerenciaPedidos.pesquisaPedido(codigo);
-        if(p != null){
-            return gerenciaPedidos.excluiPedido(p);
-        }
-    }
 }
