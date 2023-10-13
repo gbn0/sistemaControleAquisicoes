@@ -101,4 +101,18 @@ public class SistemaControle {
             }
         }
     }
-}
+    public boolean trocaUsuario(int id){
+        Usuario u = gerenciaUsuarios.pesquisaUsuarioId(id);
+
+        if(u != null){
+            usuario = u;
+            return true;
+
+        } else {
+            System.out.println("Usuário não encontrado;");
+        }
+
+
+        return false;
+    }
+    }
