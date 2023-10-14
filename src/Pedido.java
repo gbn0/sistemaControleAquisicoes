@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Pedido {
     
     private int codigo;
-    private Funcionario funcionario;
+    private Usuario usuario;
     private Departamento departamento;
     private LocalDate dataAbertura;
     private LocalDate dataConclusao;
@@ -12,9 +12,9 @@ public class Pedido {
     private ArrayList<Item> itens;
     private double valorTotal;
 
-    public Pedido(int codigo, Funcionario funcionario, Departamento departamento, LocalDate dataAbertura) {
+    public Pedido(int codigo, Usuario usuario, Departamento departamento, LocalDate dataAbertura) {
         this.codigo = codigo;
-        this.funcionario = funcionario;
+        this.usuario = usuario;
         this.departamento = departamento;
         this.dataAbertura = dataAbertura;
         this.dataConclusao = null;
@@ -34,8 +34,8 @@ public class Pedido {
     public int getCodigo() {
         return codigo;
     }
-    public Funcionario getFuncionario() {
-        return funcionario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public Departamento getDepartamento() {

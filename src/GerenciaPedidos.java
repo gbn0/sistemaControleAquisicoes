@@ -4,9 +4,24 @@ import java.util.ArrayList;
 
 public class GerenciaPedidos {
     private ArrayList<Pedido> pedidos;
+    private int ultimoCodigo;
 
     public GerenciaPedidos() {
         pedidos = new ArrayList<Pedido>();
+        ultimoCodigo = 1;
+    }
+
+    public void adicionaPedido(Pedido p ) {
+        pedidos.add(p);
+        ultimoCodigo++;
+    }
+
+    public int getUltimoCodigo() {
+        return ultimoCodigo;
+    }
+
+    public ArrayList<Pedido> getPedidos() {
+        return pedidos;
     }
 
     public double getPercentAprovados() {
@@ -68,7 +83,7 @@ public class GerenciaPedidos {
                 if (p.getValorTotal() > maior) {
                     System.out.println("Detalhes do pedido de maior valor ainda aberto:");
                     System.out.println("Código: " + p.getCodigo());
-                    System.out.println("Funcionário: " + p.getFuncionario());
+                    System.out.println("Funcionário: " + p.getUsuario());
                     System.out.println("Departamento: " + p.getDepartamento());
                     System.out.println("Data abertura: " + p.getDataAbertura());
                     System.out.println("Data conclusão: " + p.getDataConclusao());

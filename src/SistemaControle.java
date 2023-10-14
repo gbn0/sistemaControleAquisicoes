@@ -1,5 +1,6 @@
 import java.io.BufferedReader;
 import java.io.PrintStream;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileReader;
@@ -42,7 +43,52 @@ public class SistemaControle {
     }
 
     private void loop() {
-        
+        int opcao;
+        do {
+            menuPrincipal();
+            System.out.print("Digite a opção desejada: ");
+            opcao = in.nextInt();
+            switch(opcao) {
+                case 1:
+                    menuUsuário();
+                    System.out.print("Digite a opção desejada: ");
+                    int opcao2 = in.nextInt();
+                    switch(opcao2) {
+                        case 1:
+                            listaUsuarios();
+                            break;
+                        case 2:
+                            System.out.println("Digite o id do usuário");
+                            int id = in.nextInt();
+                            if(trocaUsuario(id)) {
+                                System.out.println("Usuário trocado com sucesso");
+                            }else {
+                                System.out.println("Usuário não encontrado");
+                            }
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
+                            break;
+                    }
+                case 2:
+                    menuPedidos();
+                    System.out.print("Digite a opção desejada: ");
+                    int opcao3 = in.nextInt();
+                    switch(opcao3) {
+                        case 1:
+                            adicionaPedido();
+                            break;
+                        case 2:
+                            listaPedidos();
+                            break;
+                        case 3:
+                            aprovaPedido();
+                            break;
+                    }
+            }
+        }while(opcao !=0);
     }
 
     private void menuPrincipal() {
@@ -57,10 +103,14 @@ public class SistemaControle {
 
     private void menuPedidos() {
         System.out.println("[1] Registrar pedido\n"
-                            + "[2] Listar pedidos\n"
+                            + "[2] Listar todos pedidos\n"
                             + "[3] Aprovar pedido\n"
                             + "[4] Procurar pedidos\n"
-                            + "[5] ");
+                            + "[0] Voltar");
+    }
+
+    private void menuProcuraPedidos() {
+
     }
 
     private void menuUsuário() {
@@ -82,8 +132,19 @@ public class SistemaControle {
         in = new Scanner(System.in);
     }
 
+    public void adicionaPedido() {
+        System.out.println("Digite o nome do departamento");
+        Departamento d = gerenciaDepartamentos.pesquisaDepartamento(in.nextLine());
+        if(d == null) {
+            System.out.println("Departamento não encontrado");
+            return;
+        }
+        Pedido p = new Pedido(gerenciaPedidos.getUltimoCodigo(),this.usuario,d,LocalDate.now());
+        gerenciaPedidos.adicionaPedido(p);
+    }
 
-    private void AprovaPedido() {
+
+    private void aprovaPedido() {
         if(!(usuario instanceof Administrador)) {
             System.out.println("Você não tem permissão para acessar essa função");
             return;
@@ -140,6 +201,15 @@ public class SistemaControle {
         for(Usuario u : usuarios){
             System.out.println(u);
             
+        }
+    }
+
+    public void listaPedidos() {
+        ArrayList<Pedido> pedidos = gerenciaPedidos.getPedidos();
+        for(Pedido p : pedidos) {
+            System.out.println("==================================\n"
+             + p + "\n"
+             + "==================================");
         }
     }
 }
