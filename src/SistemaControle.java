@@ -45,8 +45,33 @@ public class SistemaControle {
         
     }
 
-    private void menu() {
-        
+    private void menuPrincipal() {
+        System.out.println("[1] Usuários\n"
+                            + "[2] Pedidos\n"
+                            + "[3] Itens\n"
+                            + "[4] Departamentos\n"
+                            + "[5] Funcionários\n"
+                            + "[6] Estatísticas gerais\n"
+                            + "[0] Sair");
+    }
+
+    private void menuPedidos() {
+        System.out.println("[1] Registrar pedido\n"
+                            + "[2] Listar pedidos\n"
+                            + "[3] Aprovar pedido\n"
+                            + "[4] Procurar pedidos\n"
+                            + "[5] ");
+    }
+
+    private void menuUsuário() {
+        System.out.println("[1] Listar usuários\n"
+                            + "[2] Trocar usuário\n"
+                            + "[0] Voltar");
+    }
+
+    private void menuItens() {
+        System.out.println("[1] Listar itens\n"
+                            + "[0] Voltar");
     }
 
     private void carregaDados() {
@@ -61,7 +86,7 @@ public class SistemaControle {
     private void AprovaPedido() {
         if(!(usuario instanceof Administrador)) {
             System.out.println("Você não tem permissão para acessar essa função");
-            loop();
+            return;
         }
         System.out.println("Digite o codigo do pedido a ser buscado");
         int c = in.nextInt();
@@ -104,16 +129,10 @@ public class SistemaControle {
     }
     public boolean trocaUsuario(int id){
         Usuario u = gerenciaUsuarios.pesquisaUsuarioId(id);
-
         if(u != null){
             usuario = u;
             return true;
-
-        } else {
-            System.out.println("Usuário não encontrado;");
         }
-
-
         return false;
     }
         public void listaUsuarios(){
