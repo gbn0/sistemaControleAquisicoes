@@ -32,7 +32,7 @@ public class SistemaControle {
         while(u == null) {
             System.out.println("Digite o nome do usuário que está utilizando o sistema");
             String nome = in.nextLine();
-            u = gerenciaUsuarios.pesquisaUsuario(nome);
+            u = gerenciaUsuarios.pesquisaUsuarioNome(nome);
             if(u == null) {
                 System.out.println("Usuário não encontrado digite novamente");
             }
@@ -120,7 +120,7 @@ public class SistemaControle {
         ArrayList<Usuario> usuarios = gerenciaUsuarios.getUsuarios();
         for(Usuario u : usuarios){
             System.out.println(u);
-
+            
         }
     }
 }

@@ -30,4 +30,8 @@ public class GerenciaUsuarios {
         }
         return aux;
     }
+
+    public ArrayList<Usuario> getUsuarios() {
+        return usuarios;
+    }
 }
