@@ -11,6 +11,7 @@ public class SistemaControle {
     private GerenciaPedidos gerenciaPedidos;
     private GerenciaDepartamentos gerenciaDepartamentos;
     private GerenciaUsuarios gerenciaUsuarios;
+    private GerenciaItens gerenciaItens;
     private Usuario usuario = null;
 
     public SistemaControle() {
@@ -48,11 +49,13 @@ public class SistemaControle {
             menuPrincipal();
             System.out.print("Digite a opção desejada: ");
             opcao = in.nextInt();
+            in.nextLine();
             switch(opcao) {
                 case 1:
                     menuUsuário();
                     System.out.print("Digite a opção desejada: ");
                     int opcao2 = in.nextInt();
+                    in.nextLine();
                     switch(opcao2) {
                         case 1:
                             listaUsuarios();
@@ -60,6 +63,7 @@ public class SistemaControle {
                         case 2:
                             System.out.println("Digite o id do usuário");
                             int id = in.nextInt();
+                            in.nextLine();
                             if(trocaUsuario(id)) {
                                 System.out.println("Usuário trocado com sucesso");
                             }else {
@@ -76,6 +80,7 @@ public class SistemaControle {
                     menuPedidos();
                     System.out.print("Digite a opção desejada: ");
                     int opcao3 = in.nextInt();
+                    in.nextLine();
                     switch(opcao3) {
                         case 1:
                             adicionaPedido();
@@ -86,7 +91,108 @@ public class SistemaControle {
                         case 3:
                             aprovaPedido();
                             break;
+                        case 4:
+                            menuProcuraPedidos();
+                            System.out.print("Digite a opção desejada: ");
+                            int opcao4 = in.nextInt();
+                            in.nextLine();
+                            switch(opcao4) {
+                                case 1:
+                                    System.out.println("Digite a data inicial no formato: ano-mes-dia");
+                                    LocalDate inic = LocalDate.parse(in.nextLine());
+                                    System.out.println("Digite a data final no formato: ano-mes-dia");
+                                    LocalDate end = LocalDate.parse(in.nextLine());
+                                    ArrayList<Pedido> entreData = gerenciaPedidos.listarPedidoEntreDatas(inic,end);
+                                    for(Pedido p : entreData) {
+                                        System.out.println(p);
+                                    }
+                                    break;
+                                case 2:
+                                    System.out.println("Digite o id do funcionário solicitante");
+                                    int id = in.nextInt();
+                                    in.nextLine();
+                                    Usuario u = gerenciaUsuarios.pesquisaUsuarioId(id);
+                                    if(u == null) {
+                                        System.out.println("Usuário não encontrado");
+                                        break;
+                                    }
+                                    ArrayList<Pedido> func = gerenciaPedidos.pesquisaPedidoFuncionario(u);
+                                    for(Pedido p : func) {
+                                        System.out.println(p);
+                                    }
+                                    break;
+                                case 3:
+                                    System.out.println("Digite a descrição do item");
+                                    String desc = in.nextLine();
+                                    Item i = gerenciaItens.pesquisaItem(desc);
+                                    if(i == null) {
+                                        System.out.println("Item não encontrado");
+                                        break;
+                                    }
+                                    ArrayList<Pedido> pItem = gerenciaPedidos.pesquisaPedidoItem(i);
+                                    if(pItem.size() == 0) {
+                                        System.out.println("Não existem pedidos com esse item");
+                                        break;
+                                    }
+                                    for(Pedido p : pItem) {
+                                        System.out.println(p);
+                                    }
+                                    break;
+                                case 0:
+                                    break;
+                                default:
+                                    System.out.println("Opcão inválida");
+                                    break;
+                            }
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
+                            break;
                     }
+
+                    break;
+                case 3:
+                    menuItens();
+                    System.out.print("Digite a opção desejada: ");
+                    int opcao4 = in.nextInt();
+                    in.nextLine();
+                    switch(opcao4) {
+                        case 1:
+                            gerenciaItens.listaItens();
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
+                            break;
+                    }
+                    break;
+                case 4:
+                    menuDepartamentos();
+                    System.out.print("Digite a opção desejada: ");
+                    int opcao5 = in.nextInt();
+                    in.nextLine();
+                    switch(opcao5) {
+                        case 1:
+                            gerenciaDepartamentos.listaDepartamentos();
+                            break;
+                        case 0:
+                            break;
+                        default:
+                            System.out.println("Opção inválida");
+                            break; 
+                    }
+                case 5:
+                    exibeEstatiscas();
+                    break;
+                case 0:
+                    System.out.println("Encerrando");
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    
             }
         }while(opcao !=0);
     }
@@ -96,8 +202,7 @@ public class SistemaControle {
                             + "[2] Pedidos\n"
                             + "[3] Itens\n"
                             + "[4] Departamentos\n"
-                            + "[5] Funcionários\n"
-                            + "[6] Estatísticas gerais\n"
+                            + "[5] Estatísticas gerais\n"
                             + "[0] Sair");
     }
 
@@ -110,7 +215,10 @@ public class SistemaControle {
     }
 
     private void menuProcuraPedidos() {
-
+        System.out.println("[1] Procurar pedidos entre duas datas\n"
+                            + "[2] Procurar pedidos por funcionário\n"
+                            + "[3] Procurar pedidos por item\n"
+                            + "[0] Voltar");
     }
 
     private void menuUsuário() {
@@ -124,12 +232,28 @@ public class SistemaControle {
                             + "[0] Voltar");
     }
 
+    private void menuDepartamentos() {
+        System.out.println("[1] Listar departamentos\n"
+                            + "[0] Voltar");
+    }
+
     private void carregaDados() {
 
     }
 
     private void restauraEntrada() {
         in = new Scanner(System.in);
+    }
+
+    public void exibeEstatiscas() {
+        System.out.println("Quantidade de pedidos: " + gerenciaPedidos.getQuantidadePedidos());
+        System.out.println("Percentual de pedidos aprovados: " + gerenciaPedidos.getPercentAprovados() + "%");
+        System.out.println("Percentual de pedidos reprovados: " + gerenciaPedidos.getPercentReprovados() + "%");
+        System.out.println("Quantidade de pedidos nos últimos 30 dias: " + gerenciaPedidos.totalPedidos30Dias());
+        System.out.println("Valor médio dos pedidos nos últimos 30 dias: " + gerenciaPedidos.valorMedioPedidos30Dias());
+        System.out.println("Valor total de pedidos aprovados nos últimos 30 dias: " + gerenciaPedidos.getValorAprovadosUltimos30Dias());
+        System.out.println("Valor total de pedidos reprovados nos últimos 30 dias: " + gerenciaPedidos.getValorReprovadosUltimos30Dias());
+        gerenciaPedidos.verDetalhesPedidoMaiorValorAberto();
     }
 
     public void adicionaPedido() {

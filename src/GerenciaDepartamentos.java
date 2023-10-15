@@ -18,4 +18,10 @@ public class GerenciaDepartamentos { //athos
         }
         return null;
     }
+    
+    public void listaDepartamentos() {
+        for(Departamento d : departamentos) {
+            System.out.println(d);
+        }
+    }
 }

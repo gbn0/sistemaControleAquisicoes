@@ -18,4 +18,10 @@ public class GerenciaItens { //athos
         }
         return null;
     }
+
+    public void listaItens() {
+        for(Item i : itens) {
+            System.out.println(i);
+        }
+    }
 }
