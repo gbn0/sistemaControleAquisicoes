@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.PrintStream;
+import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -16,7 +18,7 @@ public class SistemaControle {
 
     public SistemaControle() {
         try {
-            BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosentrada.txt"));
+            BufferedReader streamEntrada = new BufferedReader(new FileReader("dados.txt"));
             in = new Scanner(streamEntrada);
         }catch(Exception e) {
             System.out.println(e);
@@ -239,6 +241,11 @@ public class SistemaControle {
 
     private void carregaDados() {
 
+        String nome = in.nextLine();
+        do {
+            
+
+        }while(!(nome.equals("-1")));
     }
 
     private void restauraEntrada() {
