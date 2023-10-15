@@ -241,11 +241,76 @@ public class SistemaControle {
 
     private void carregaDados() {
 
+        //registra departamentos
         String nome = in.nextLine();
         do {
             
+            String descricao = in.nextLine();
+            double valorMaximo = in.nextDouble();
+            in.nextLine();
+
+            Departamento d = new Departamento(nome, descricao, valorMaximo);
+            gerenciaDepartamentos.cadastraDepartamento(d);
+
+            nome = in.nextLine();
 
         }while(!(nome.equals("-1")));
+
+        //Registra usuários sendo funcionários ou administradores
+        nome = in.nextLine();
+        do {
+            
+            String iniciais = in.nextLine();
+            String tipo = in.nextLine();
+            Departamento d = gerenciaDepartamentos.pesquisaDepartamento(in.nextLine());
+
+            Usuario u;
+            if(tipo.equals("ADM")) {
+                u = new Administrador(gerenciaUsuarios.getUltimoId(),nome, iniciais, d);
+            }else {
+                u = new Funcionario(gerenciaUsuarios.getUltimoId(),nome, iniciais, d);
+            }
+            
+            gerenciaUsuarios.adicionaUsuario(u);
+
+            nome = in.nextLine();
+
+        }while(!(nome.equals("-1")));
+
+        String descricao;
+        do {
+            
+            descricao = in.nextLine();
+            double valor = in.nextDouble();
+            in.nextLine();
+            
+            Item item = new Item(descricao, valor);
+            gerenciaItens.cadastraItem(item);
+
+            descricao = in.nextLine();
+
+        }while(!(descricao.equals("-1")));
+
+        int codigo = in.nextInt();
+        in.nextLine();
+        do {
+            
+            Usuario u = gerenciaUsuarios.pesquisaUsuarioId(codigo);
+            Departamento d = gerenciaDepartamentos.pesquisaDepartamento(in.nextLine());
+            ArrayList<Item> itens = new ArrayList<Item>();
+            descricao = in.nextLine();
+            do {
+                itens.add(gerenciaItens.pesquisaItem(descricao));
+                descricao = in.nextLine();
+            }while(!(descricao.equals("-1")));
+            
+            LocalDate data = LocalDate.parse(in.nextLine());
+
+            Pedido p  = new Pedido(codigo, u, d, data, itens);
+            codigo = in.nextInt();
+            in.nextLine();
+
+        }while(codigo != -1);
     }
 
     private void restauraEntrada() {
@@ -253,6 +318,10 @@ public class SistemaControle {
     }
 
     public void exibeEstatiscas() {
+        if(!(usuario instanceof Administrador)) {
+            System.out.println("Você não tem permissão para acessar essa função");
+            return;
+        }
         System.out.println("Quantidade de pedidos: " + gerenciaPedidos.getQuantidadePedidos());
         System.out.println("Percentual de pedidos aprovados: " + gerenciaPedidos.getPercentAprovados() + "%");
         System.out.println("Percentual de pedidos reprovados: " + gerenciaPedidos.getPercentReprovados() + "%");
@@ -270,7 +339,32 @@ public class SistemaControle {
             System.out.println("Departamento não encontrado");
             return;
         }
-        Pedido p = new Pedido(gerenciaPedidos.getUltimoCodigo(),this.usuario,d,LocalDate.now());
+
+        System.out.println("Digite a descrição dos itens que deseja adicionar, um de cada vez, e 0 para encerrar");
+        String descricao = in.nextLine();
+        ArrayList<Item> itens = new ArrayList<Item>();
+        do {
+            Item i = gerenciaItens.pesquisaItem(descricao);
+            if (i != null) {
+                System.out.println("Esse item não existe");
+            }else {
+                itens.add(i);
+                System.out.println("Item adicionado ao pedido");
+            }
+
+            System.out.println("Digite a descrição dos itens que deseja adicionar, um de cada vez, e 0 para encerrar");
+            descricao = in.nextLine();
+            
+        }while(!(descricao.equals("0")));
+
+        
+        Pedido p = new Pedido(gerenciaPedidos.getUltimoCodigo(),this.usuario,d,LocalDate.now(), itens);
+
+        if(p.getValorTotal() > d.getValorMaximo()) {
+            System.out.println("O valor total do pedido excede o valor máximo do departamento");
+            return;
+        }
+
         gerenciaPedidos.adicionaPedido(p);
     }
 
@@ -319,6 +413,7 @@ public class SistemaControle {
             }
         }
     }
+    
     public boolean trocaUsuario(int id){
         Usuario u = gerenciaUsuarios.pesquisaUsuarioId(id);
         if(u != null){
@@ -327,11 +422,15 @@ public class SistemaControle {
         }
         return false;
     }
-        public void listaUsuarios(){
+
+    public void listaUsuarios(){
         ArrayList<Usuario> usuarios = gerenciaUsuarios.getUsuarios();
         for(Usuario u : usuarios){
-            System.out.println(u);
-            
+            if(u.equals(usuario)) {
+                System.out.println(u + "(Atual)");
+            }else {
+                System.out.println(u);
+            }
         }
     }
 

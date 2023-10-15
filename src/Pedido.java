@@ -12,14 +12,14 @@ public class Pedido {
     private ArrayList<Item> itens;
     private double valorTotal;
 
-    public Pedido(int codigo, Usuario usuario, Departamento departamento, LocalDate dataAbertura) {
+    public Pedido(int codigo, Usuario usuario, Departamento departamento, LocalDate dataAbertura, ArrayList<Item> itens) {
         this.codigo = codigo;
         this.usuario = usuario;
         this.departamento = departamento;
         this.dataAbertura = dataAbertura;
         this.dataConclusao = null;
         this.status = "Aberto";
-        this.itens = new ArrayList<Item>();
+        this.itens = itens;
         this.valorTotal = calculaValorTotal();
     }
 

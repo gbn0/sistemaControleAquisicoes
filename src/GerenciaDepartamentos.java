@@ -12,7 +12,7 @@ public class GerenciaDepartamentos { //athos
 
     public Departamento pesquisaDepartamento(String nome){
         for ( Departamento d : departamentos){
-            if(d.getNome().equals(nome)){
+            if(d.getNome().equalsIgnoreCase(nome)){
                 return d;
             }
         }

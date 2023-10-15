@@ -1,1 +1,39 @@
-Gabriel
+RH
+Departamento de recursos humanos responsável pelo gerenciamento dos colaboradores da empresa.
+10000
+Financeiro
+Departamento Financeiro responsável pelo controle de contas a pagar e receber, gestão de impostos, controle de riscos e etc.
+20000
+Engenharia
+Departamento de Engenharia responsável por coordenar o desenvolvimento dos projetos.
+5000
+Manutenção
+Departamento de Manutenção responsável por programar o trabalho de forma eficiente e garantir a qualidade dos produtos e serviços.
+7000
+Operacional
+Departamento Operacional responsável por realizar as atividades da empresa.
+9000
+-1
+Gabriel Saldanha
+GS
+ADM
+Operacional
+Guilherme Kuhn
+GK
+FUNC
+Operacional
+Gabriel Petry
+GP
+FUNC
+Operacional
+Athos Puna
+AP
+ADM
+Financeiro
+-1
+Celular
+5000
+-1
+Gabriel Saldanha
+
+-1
