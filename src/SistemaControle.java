@@ -27,6 +27,7 @@ public class SistemaControle {
         this.gerenciaDepartamentos = new GerenciaDepartamentos();
         this.gerenciaPedidos = new GerenciaPedidos();
         this.gerenciaUsuarios = new GerenciaUsuarios();
+        this.gerenciaItens = new GerenciaItens();
     }
 
     public void executa() {
@@ -78,6 +79,7 @@ public class SistemaControle {
                             System.out.println("Opção inválida");
                             break;
                     }
+                break;
                 case 2:
                     menuPedidos();
                     System.out.print("Digite a opção desejada: ");
@@ -186,6 +188,7 @@ public class SistemaControle {
                             System.out.println("Opção inválida");
                             break; 
                     }
+                    break;
                 case 5:
                     exibeEstatiscas();
                     break;
@@ -296,7 +299,7 @@ public class SistemaControle {
         do {
             
             Usuario u = gerenciaUsuarios.pesquisaUsuarioId(codigo);
-            Departamento d = gerenciaDepartamentos.pesquisaDepartamento(in.nextLine());
+            Departamento d = u.getDepartamento();
             ArrayList<Item> itens = new ArrayList<Item>();
             descricao = in.nextLine();
             do {
@@ -306,7 +309,8 @@ public class SistemaControle {
             
             LocalDate data = LocalDate.parse(in.nextLine());
 
-            Pedido p  = new Pedido(codigo, u, d, data, itens);
+            Pedido p  = new Pedido(gerenciaPedidos.getUltimoCodigo(), u, d, data, itens);
+            gerenciaPedidos.adicionaPedido(p);
             codigo = in.nextInt();
             in.nextLine();
 
@@ -368,7 +372,6 @@ public class SistemaControle {
         gerenciaPedidos.adicionaPedido(p);
     }
 
-
     private void aprovaPedido() {
         if(!(usuario instanceof Administrador)) {
             System.out.println("Você não tem permissão para acessar essa função");
@@ -386,7 +389,7 @@ public class SistemaControle {
                 case "Aberto":
                     System.out.println("O pedido está aberto, detalhes do pedido:\n" + p);
                     System.out.println("--------------------------------------------------");
-                    System.out.println("1- Aprovar\n2-Reprovar\n0-Sair");
+                    System.out.println("1- Aprovar\n2- Reprovar\n0- Sair");
                     int op = in.nextInt();
                     if(op == 1) {
                         p.setStatus("Aprovado");

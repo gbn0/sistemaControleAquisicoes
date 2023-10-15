@@ -34,6 +34,8 @@ Financeiro
 Celular
 5000
 -1
-Gabriel Saldanha
-
+1
+Celular
+-1
+2019-03-01
 -1

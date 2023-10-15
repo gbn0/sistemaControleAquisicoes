@@ -64,6 +64,7 @@ public class Pedido {
 
     public void setStatus(String status) {
         this.status = status;
+        this.dataConclusao = LocalDate.now();
     }
 
     @Override
