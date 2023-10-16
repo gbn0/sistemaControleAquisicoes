@@ -48,9 +48,10 @@ public class GerenciaPedidos {
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
-
-            if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Reprovado")) {
-                aux += pedido.getValorTotal();
+            if(!(dataAux == null)) {
+                if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Reprovado")) {
+                    aux += pedido.getValorTotal();
+                }
             }
         }
         return aux;
@@ -60,9 +61,10 @@ public class GerenciaPedidos {
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
-
-            if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Aprovado")) {
-                aux += pedido.getValorTotal();
+            if(!(dataAux == null))  {
+                if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Aprovado")) {
+                    aux += pedido.getValorTotal();
+                }
             }
         }
         return aux;
@@ -78,21 +80,25 @@ public class GerenciaPedidos {
 
     public void verDetalhesPedidoMaiorValorAberto() {
         double maior = pedidos.get(0).getValorTotal();
+        Pedido pMaior = null;
         for (Pedido p : pedidos) {
             if (p.getStatus().equals("Aberto")) {
                 if (p.getValorTotal() > maior) {
-                    System.out.println("Detalhes do pedido de maior valor ainda aberto:");
-                    System.out.println("Código: " + p.getCodigo());
-                    System.out.println("Funcionário: " + p.getUsuario());
-                    System.out.println("Departamento: " + p.getDepartamento());
-                    System.out.println("Data abertura: " + p.getDataAbertura());
-                    System.out.println("Data conclusão: " + p.getDataConclusao());
-                    System.out.println("Status: " + p.getStatus());
-                    System.out.println("Itens: " + p.getItens());
-                    System.out.println("Valor total: " + p.getValorTotal());
+                    pMaior = p;
+                    maior = p.getValorTotal();
                 }
             }
         }
+
+        System.out.println("Detalhes do pedido de maior valor ainda aberto:");
+        System.out.println("Código: " + pMaior.getCodigo());
+        System.out.println("Funcionário: " + pMaior.getUsuario());
+        System.out.println("Departamento: " + pMaior.getDepartamento());
+        System.out.println("Data abertura: " + pMaior.getDataAbertura());
+        System.out.println("Data conclusão: " + pMaior.getDataConclusao());
+        System.out.println("Status: " + pMaior.getStatus());
+        System.out.println("Itens: " + pMaior.getItens());
+        System.out.println("Valor total: " + pMaior.getValorTotal());
     }
 
     public ArrayList<Pedido> listarPedidoEntreDatas(LocalDate dataInicio, LocalDate dataFinal) {
