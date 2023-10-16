@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -23,12 +24,14 @@ public class Pedido {
         this.valorTotal = calculaValorTotal();
     }
 
-    private double calculaValorTotal() {    
+    private double calculaValorTotal() {
+        DecimalFormat d = new DecimalFormat("0.00");
         double valor = 0;
         for(Item i : itens) {
             valor += i.getValor();
         }
-        return valor;
+        
+        return Double.parseDouble(d.format(valor));
     }
 
     public int getCodigo() {
@@ -69,7 +72,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return "Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura;
+        return ("Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura);
     }
 
     

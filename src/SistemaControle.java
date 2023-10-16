@@ -4,6 +4,7 @@ import java.io.PrintStream;
 import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 import java.io.FileReader;
 
@@ -23,6 +24,9 @@ public class SistemaControle {
         }catch(Exception e) {
             System.out.println(e);
         }
+
+        Locale.setDefault(Locale.ENGLISH);
+        in.useLocale(Locale.ENGLISH);
 
         this.gerenciaDepartamentos = new GerenciaDepartamentos();
         this.gerenciaPedidos = new GerenciaPedidos();
@@ -280,10 +284,10 @@ public class SistemaControle {
 
         }while(!(nome.equals("-1")));
 
-        String descricao;
+        //Registra itens
+        String descricao = in.nextLine();;
         do {
             
-            descricao = in.nextLine();
             double valor = in.nextDouble();
             in.nextLine();
             
@@ -294,6 +298,7 @@ public class SistemaControle {
 
         }while(!(descricao.equals("-1")));
 
+        //Registra pedidos
         int codigo = in.nextInt();
         in.nextLine();
         do {
@@ -307,8 +312,8 @@ public class SistemaControle {
                 descricao = in.nextLine();
             }while(!(descricao.equals("-1")));
             
-            LocalDate data = LocalDate.parse(in.nextLine());
-
+            LocalDate data = LocalDate.now().minusDays(in.nextInt());
+            in.nextLine();
             Pedido p  = new Pedido(gerenciaPedidos.getUltimoCodigo(), u, d, data, itens);
             gerenciaPedidos.adicionaPedido(p);
             codigo = in.nextInt();
