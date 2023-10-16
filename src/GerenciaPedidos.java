@@ -172,12 +172,22 @@ public class GerenciaPedidos {
         }
         return itens;
     }
-    public boolean excluiPedido(int codigo){
+    public boolean excluiPedido(int codigo, Usuario u){
         Pedido p = pesquisaPedido(codigo);
         if(p != null){
-            pedidos.remove(p);
-            return true;
-        } 
+            if(p.getUsuario().equals(u)) {
+                if(p.getStatus().equals("Aberto")) {
+                    pedidos.remove(p);
+                    return true;
+                }else {
+                    System.out.println("Apenas pedidos ainda abertos podem ser excluidos");
+                }
+            }else {
+                System.out.println("Apenas o usuário que criou o pedido pode exclui-lo");
+            }
+        }else {
+            System.out.println("Pedido não encontrado");
+        }
         return false;
     }
 }

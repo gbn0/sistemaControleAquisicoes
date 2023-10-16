@@ -154,6 +154,12 @@ public class SistemaControle {
                                     break;
                             }
                             break;
+                        case 5:
+                            System.out.println("Digite o código do pedido que você deseja excluir");
+                            int codigo = in.nextInt();
+                            in.nextLine();
+                            gerenciaPedidos.excluiPedido(codigo, usuario);
+                            break;
                         case 0:
                             break;
                         default:
@@ -221,6 +227,7 @@ public class SistemaControle {
                             + "[2] Listar todos pedidos\n"
                             + "[3] Aprovar pedido\n"
                             + "[4] Procurar pedidos\n"
+                            + "[5] Exclui pedido\n"
                             + "[0] Voltar");
     }
 
