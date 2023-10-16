@@ -39,9 +39,10 @@ public class SistemaControle {
         restauraEntrada();
         Usuario u = null;
         while(u == null) {
-            System.out.println("Digite o nome do usuário que está utilizando o sistema");
-            String nome = in.nextLine();
-            u = gerenciaUsuarios.pesquisaUsuarioNome(nome);
+            System.out.println("Digite o id do usuário que está utilizando o sistema");
+            int id = in.nextInt();
+            in.nextLine();
+            u = gerenciaUsuarios.pesquisaUsuarioId(id);
             if(u == null) {
                 System.out.println("Usuário não encontrado digite novamente");
             }
