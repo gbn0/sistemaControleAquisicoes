@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -12,23 +13,25 @@ public class Pedido {
     private ArrayList<Item> itens;
     private double valorTotal;
 
-    public Pedido(int codigo, Usuario usuario, Departamento departamento, LocalDate dataAbertura) {
+    public Pedido(int codigo, Usuario usuario, Departamento departamento, LocalDate dataAbertura, ArrayList<Item> itens) {
         this.codigo = codigo;
         this.usuario = usuario;
         this.departamento = departamento;
         this.dataAbertura = dataAbertura;
         this.dataConclusao = null;
         this.status = "Aberto";
-        this.itens = new ArrayList<Item>();
+        this.itens = itens;
         this.valorTotal = calculaValorTotal();
     }
 
-    private double calculaValorTotal() {    
+    private double calculaValorTotal() {
+        DecimalFormat d = new DecimalFormat("0.00");
         double valor = 0;
         for(Item i : itens) {
             valor += i.getValor();
         }
-        return valor;
+        
+        return Double.parseDouble(d.format(valor));
     }
 
     public int getCodigo() {
@@ -64,11 +67,12 @@ public class Pedido {
 
     public void setStatus(String status) {
         this.status = status;
+        this.dataConclusao = LocalDate.now();
     }
 
     @Override
     public String toString() {
-        return "Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura;
+        return ("Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura);
     }
 
     

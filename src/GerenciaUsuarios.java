@@ -2,13 +2,20 @@ import java.util.ArrayList;
 
 public class GerenciaUsuarios {
     private ArrayList<Usuario> usuarios;
+    private int ultimoId;
     
     public GerenciaUsuarios () {
         usuarios = new ArrayList<>();
+        ultimoId = 1;
     }
 
     public void adicionaUsuario (Usuario u)  {
         usuarios.add(u);
+        ultimoId++;
+    }
+
+    public int getUltimoId() {
+        return ultimoId;
     }
 
     public Usuario pesquisaUsuarioId (int id) {
