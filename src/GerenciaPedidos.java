@@ -70,6 +70,11 @@ public class GerenciaPedidos {
         return aux;
     }
 
+    /**
+     * Retorna o numero de pedidos no sistema.
+     *
+     * @return o numero total de pedidos no sistema.
+     */
     public int getQuantidadePedidos() {
         return pedidos.size();
     }
