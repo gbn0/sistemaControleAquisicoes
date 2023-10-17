@@ -24,6 +24,10 @@ public class GerenciaPedidos {
         return pedidos;
     }
 
+    /**
+     * Calcula a porcentagem dos pedidos aprovados.
+     * @return a porcentage dos pedidos aprovados.
+     */
     public double getPercentAprovados() {
         int aux = 0;
         for (Pedido pedido : pedidos) {
