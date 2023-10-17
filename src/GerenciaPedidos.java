@@ -44,6 +44,11 @@ public class GerenciaPedidos {
         return getPercent(aux, pedidos.size());
     }
 
+    /**
+     * Cacula o valor total dos pedidos reprovados nos ultimos 30 dias.
+     *
+     * @return the total value of all rejected orders in the last 30 days.
+     */
     public double getValorReprovadosUltimos30Dias() {
         double aux = 0;
         for (Pedido pedido : pedidos) {
@@ -58,7 +63,7 @@ public class GerenciaPedidos {
     }
 
     /**
-     * Retorna o valor total dos pedidos aprovados nos ultimos 30 dias.
+     * Cacula o valor total dos pedidos aprovados nos ultimos 30 dias.
      *
      * @return o valor total dos pedidos aprovados nos ultimos 30 dias.
      */
