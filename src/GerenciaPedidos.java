@@ -57,6 +57,11 @@ public class GerenciaPedidos {
         return aux;
     }
 
+    /**
+     * Retorna o valor total dos pedidos aprovados nos ultimos 30 dias.
+     *
+     * @return o valor total dos pedidos aprovados nos ultimos 30 dias.
+     */
     public double getValorAprovadosUltimos30Dias() {
         double aux = 0;
         for (Pedido pedido : pedidos) {
