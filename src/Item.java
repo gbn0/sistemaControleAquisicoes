@@ -16,5 +16,10 @@ public class Item {
         return valor;
     }
 
+    @Override
+    public String toString() {
+        return "Item [descricao=" + descricao + ", valor=" + valor + "]";
+    }
+
     
 }

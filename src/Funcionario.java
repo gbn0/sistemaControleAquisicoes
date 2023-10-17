@@ -4,5 +4,10 @@ public class Funcionario extends Usuario{
         super(id, nome, iniciais, departamento);
         
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario [departamento=" + this.getDepartamento() + "]";
+    }
     
 }

@@ -22,5 +22,10 @@ public class Departamento {
         return valorMaximo;
     }
 
+    @Override
+    public String toString() {
+        return "Departamento [nome=" + nome + ", descricao=" + descricao + ", valorMaximo=" + valorMaximo + "]";
+    }
+
     
 }
