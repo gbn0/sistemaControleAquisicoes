@@ -34,6 +34,10 @@ public class GerenciaPedidos {
         return getPercent(aux, pedidos.size());
     }
 
+    /**
+     * Calcula a porcentagem dos pedidos reprovados.
+     * @return a porcentage dos pedidos reprovados.
+     */
     public double getPercentReprovados() {
         int aux = 0;
         for (Pedido pedido : pedidos) {
