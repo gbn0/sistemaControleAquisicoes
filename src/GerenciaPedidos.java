@@ -24,8 +24,9 @@ public class GerenciaPedidos {
         return pedidos;
     }
 
-    /*
-     * @return retorna porcentagem de pedidos aprovados
+    /**
+     * Calcula a porcentagem dos pedidos aprovados.
+     * @return a porcentage dos pedidos aprovados.
      */
     public double getPercentAprovados() {
         int aux = 0;
@@ -37,10 +38,10 @@ public class GerenciaPedidos {
         return getPercent(aux, pedidos.size());
     }
 
-    /*
-     * @return retorna porcentagem de pedidos reprovados
+    /**
+     * Calcula a porcentagem dos pedidos reprovados.
+     * @return a porcentage dos pedidos reprovados.
      */
-
     public double getPercentReprovados() {
         int aux = 0;
         for (Pedido pedido : pedidos) {
@@ -51,6 +52,11 @@ public class GerenciaPedidos {
         return getPercent(aux, pedidos.size());
     }
 
+    /**
+     * Cacula o valor total dos pedidos reprovados nos ultimos 30 dias.
+     *
+     * @return the total value of all rejected orders in the last 30 days.
+     */
     public double getValorReprovadosUltimos30Dias() {
         double aux = 0;
         for (Pedido pedido : pedidos) {
@@ -64,6 +70,11 @@ public class GerenciaPedidos {
         return aux;
     }
 
+    /**
+     * Cacula o valor total dos pedidos aprovados nos ultimos 30 dias.
+     *
+     * @return o valor total dos pedidos aprovados nos ultimos 30 dias.
+     */
     public double getValorAprovadosUltimos30Dias() {
         double aux = 0;
         for (Pedido pedido : pedidos) {
@@ -77,10 +88,21 @@ public class GerenciaPedidos {
         return aux;
     }
 
+    /**
+     * Retorna o numero de pedidos no sistema.
+     *
+     * @return o numero total de pedidos no sistema.
+     */
     public int getQuantidadePedidos() {
         return pedidos.size();
     }
 
+    /**
+     * Calcula a porcentagem do valor em relação ao total.
+     * @param value o valor para calcular a porcentagem de.
+     * @param total o valor total para calcular a porcentagem.
+     * @return a porcentagem do valor em relação ao total.
+     */
     private double getPercent(int value, int total) {
         return (value / total) * 100;
     }
