@@ -11,7 +11,7 @@ public class GerenciaPedidos {
         ultimoCodigo = 1;
     }
 
-    public void adicionaPedido(Pedido p ) {
+    public void adicionaPedido(Pedido p) {
         pedidos.add(p);
         ultimoCodigo++;
     }
@@ -61,7 +61,7 @@ public class GerenciaPedidos {
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
-            if(!(dataAux == null)) {
+            if (!(dataAux == null)) {
                 if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Reprovado")) {
                     aux += pedido.getValorTotal();
                 }
@@ -79,7 +79,7 @@ public class GerenciaPedidos {
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
-            if(!(dataAux == null))  {
+            if (!(dataAux == null)) {
                 if (dataAux.isAfter(LocalDate.now().minusDays(30)) && pedido.getStatus().equals("Aprovado")) {
                     aux += pedido.getValorTotal();
                 }
@@ -182,8 +182,8 @@ public class GerenciaPedidos {
 
     public ArrayList<Pedido> pesquisaPedidoFuncionario(Usuario u) {
         ArrayList<Pedido> func = new ArrayList<Pedido>();
-        for(Pedido p : pedidos) {
-            if(p.getUsuario().equals(u)) {
+        for (Pedido p : pedidos) {
+            if (p.getUsuario().equals(u)) {
                 func.add(p);
             }
         }
@@ -192,29 +192,30 @@ public class GerenciaPedidos {
 
     public ArrayList<Pedido> pesquisaPedidoItem(Item i) {
         ArrayList<Pedido> itens = new ArrayList<Pedido>();
-        for(Pedido p : pedidos) {
-            for(Item i1 : p.getItens()) {
-                if(i1.equals(i)) {
+        for (Pedido p : pedidos) {
+            for (Item i1 : p.getItens()) {
+                if (i1.equals(i)) {
                     itens.add(p);
                 }
             }
         }
         return itens;
     }
-    public boolean excluiPedido(int codigo, Usuario u){
+
+    public boolean excluiPedido(int codigo, Usuario u) {
         Pedido p = pesquisaPedido(codigo);
-        if(p != null){
-            if(p.getUsuario().equals(u)) {
-                if(p.getStatus().equals("Aberto")) {
+        if (p != null) {
+            if (p.getUsuario().equals(u)) {
+                if (p.getStatus().equals("Aberto")) {
                     pedidos.remove(p);
                     return true;
-                }else {
+                } else {
                     System.out.println("Apenas pedidos ainda abertos podem ser excluidos");
                 }
-            }else {
+            } else {
                 System.out.println("Apenas o usuário que criou o pedido pode exclui-lo");
             }
-        }else {
+        } else {
             System.out.println("Pedido não encontrado");
         }
         return false;
