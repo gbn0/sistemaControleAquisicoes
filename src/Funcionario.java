@@ -10,5 +10,10 @@ public class Funcionario extends Usuario{
     public Departamento getDepartamento() {
         return departamento;
     }
+
+    @Override
+    public String toString() {
+        return "Funcionario [departamento=" + departamento + "]";
+    }
     
 }
