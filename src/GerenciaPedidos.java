@@ -74,6 +74,12 @@ public class GerenciaPedidos {
         return pedidos.size();
     }
 
+    /**
+     * Calcula a porcentagem do valor em relação ao total.
+     * @param value o valor para calcular a porcentagem de.
+     * @param total o valor total para calcular a porcentagem.
+     * @return a porcentagem do valor em relação ao total.
+     */
     private double getPercent(int value, int total) {
         return (value / total) * 100;
     }
