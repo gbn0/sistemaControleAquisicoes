@@ -1,3 +1,4 @@
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
@@ -28,28 +29,30 @@ public class GerenciaPedidos {
      * Calcula a porcentagem dos pedidos aprovados.
      * @return a porcentage dos pedidos aprovados.
      */
-    public double getPercentAprovados() {
+    public String getPercentAprovados() {
+        DecimalFormat d = new DecimalFormat("0.00");
         int aux = 0;
         for (Pedido pedido : pedidos) {
             if (pedido.getStatus().equals("Aprovado")) {
                 aux++;
             }
         }
-        return getPercent(aux, pedidos.size());
+        return d.format((getPercent(aux, pedidos.size())));
     }
 
     /**
      * Calcula a porcentagem dos pedidos reprovados.
      * @return a porcentage dos pedidos reprovados.
      */
-    public double getPercentReprovados() {
+    public String getPercentReprovados() {
+        DecimalFormat d = new DecimalFormat("0.00");
         int aux = 0;
         for (Pedido pedido : pedidos) {
             if (pedido.getStatus().equals("Reprovado")) {
                 aux++;
             }
         }
-        return getPercent(aux, pedidos.size());
+        return d.format((getPercent(aux, pedidos.size())));
     }
 
     /**
@@ -57,7 +60,8 @@ public class GerenciaPedidos {
      *
      * @return the total value of all rejected orders in the last 30 days.
      */
-    public double getValorReprovadosUltimos30Dias() {
+    public String getValorReprovadosUltimos30Dias() {
+        DecimalFormat d = new DecimalFormat("0.00");
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
@@ -67,7 +71,7 @@ public class GerenciaPedidos {
                 }
             }
         }
-        return aux;
+        return d.format(aux);
     }
 
     /**
@@ -75,7 +79,8 @@ public class GerenciaPedidos {
      *
      * @return o valor total dos pedidos aprovados nos ultimos 30 dias.
      */
-    public double getValorAprovadosUltimos30Dias() {
+    public String getValorAprovadosUltimos30Dias() {
+        DecimalFormat d = new DecimalFormat("0.00");
         double aux = 0;
         for (Pedido pedido : pedidos) {
             LocalDate dataAux = pedido.getDataConclusao();
@@ -85,7 +90,7 @@ public class GerenciaPedidos {
                 }
             }
         }
-        return aux;
+        return d.format(aux);
     }
 
     /**
@@ -104,7 +109,7 @@ public class GerenciaPedidos {
      * @return a porcentagem do valor em relação ao total.
      */
     private double getPercent(int value, int total) {
-        return (value / total) * 100;
+        return ((double)value / (double)total) * 100;
     }
 
     public void verDetalhesPedidoMaiorValorAberto() {
@@ -152,8 +157,8 @@ public class GerenciaPedidos {
         return aux;
     }
 
-    public double valorMedioPedidos30Dias() {
-
+    public String valorMedioPedidos30Dias() {
+        DecimalFormat d = new DecimalFormat("0.00");
         int count = 0;
         double valorTotal = 0;
 
@@ -164,7 +169,7 @@ public class GerenciaPedidos {
             }
         }
 
-        return valorTotal / count;
+        return d.format(valorTotal / count);
     }
 
     public Pedido pesquisaPedido(int codigo) {
