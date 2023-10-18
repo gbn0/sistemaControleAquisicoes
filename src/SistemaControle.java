@@ -363,12 +363,7 @@ public class SistemaControle {
     }
 
     public void adicionaPedido() {
-        System.out.println("Digite o nome do departamento");
-        Departamento d = gerenciaDepartamentos.pesquisaDepartamento(in.nextLine());
-        if(d == null) {
-            System.out.println("Departamento não encontrado");
-            return;
-        }
+        Departamento d = usuario.getDepartamento();
 
         System.out.println("Digite a descrição dos itens que deseja adicionar, um de cada vez, e 0 para encerrar");
         String descricao = in.nextLine();
