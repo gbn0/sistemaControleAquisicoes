@@ -214,44 +214,56 @@ public class SistemaControle {
     }
 
     private void menuPrincipal() {
-        System.out.println("[1] Usuários\n"
+        System.out.println("===========================================\n"
+                            + "[1] Usuários\n"
                             + "[2] Pedidos\n"
                             + "[3] Itens\n"
                             + "[4] Departamentos\n"
                             + "[5] Estatísticas gerais\n"
-                            + "[0] Sair");
+                            + "[0] Sair\n"
+                            + "===========================================");
     }
 
     private void menuPedidos() {
-        System.out.println("[1] Registrar pedido\n"
+        System.out.println("===========================================\n"
+                            + "[1] Registrar pedido\n"
                             + "[2] Listar todos pedidos\n"
                             + "[3] Aprovar pedido\n"
                             + "[4] Procurar pedidos\n"
                             + "[5] Exclui pedido\n"
-                            + "[0] Voltar");
+                            + "[0] Voltar\n"
+                            + "===========================================");
     }
 
     private void menuProcuraPedidos() {
-        System.out.println("[1] Procurar pedidos entre duas datas\n"
+        System.out.println("===========================================\n"
+                            + "[1] Procurar pedidos entre duas datas\n"
                             + "[2] Procurar pedidos por funcionário\n"
                             + "[3] Procurar pedidos por item\n"
-                            + "[0] Voltar");
+                            + "[0] Voltar\n"
+                            + "===========================================");
     }
 
     private void menuUsuário() {
-        System.out.println("[1] Listar usuários\n"
+        System.out.println("===========================================\n"
+                            + "[1] Listar usuários\n"
                             + "[2] Trocar usuário\n"
-                            + "[0] Voltar");
+                            + "[0] Voltar\n"
+                            + "===========================================");
     }
 
     private void menuItens() {
-        System.out.println("[1] Listar itens\n"
-                            + "[0] Voltar");
+        System.out.println("===========================================\n"
+                            + "[1] Listar itens\n"
+                            + "[0] Voltar\n"
+                            + "===========================================");
     }
 
     private void menuDepartamentos() {
-        System.out.println("[1] Listar departamentos\n"
-                            + "[0] Voltar");
+        System.out.println("===========================================\n"
+                            + "[1] Listar departamentos\n"
+                            + "[0] Voltar\n"
+                            + "===========================================");
     }
 
     private void carregaDados() {
@@ -339,6 +351,7 @@ public class SistemaControle {
             System.out.println("Você não tem permissão para acessar essa função");
             return;
         }
+        System.out.println("==========================ESTATISTICAS GERAIS==========================");
         System.out.println("Quantidade de pedidos: " + gerenciaPedidos.getQuantidadePedidos());
         System.out.println("Percentual de pedidos aprovados: " + gerenciaPedidos.getPercentAprovados() + "%");
         System.out.println("Percentual de pedidos reprovados: " + gerenciaPedidos.getPercentReprovados() + "%");
@@ -401,8 +414,8 @@ public class SistemaControle {
             switch(p.getStatus()) {
                 case "Aberto":
                     System.out.println("O pedido está aberto, detalhes do pedido:\n" + p);
-                    System.out.println("--------------------------------------------------");
-                    System.out.println("1- Aprovar\n2- Reprovar\n0- Sair");
+                    System.out.println("==============================================");
+                    System.out.println("1- Aprovar\n2- Reprovar\n0- Voltar");
                     int op = in.nextInt();
                     if(op == 1) {
                         p.setStatus("Aprovado");
@@ -411,10 +424,10 @@ public class SistemaControle {
                         p.setStatus("Reprovado");
                         System.out.println("Pedido reprovado");
                     }else if(op == 0) {
-                        loop();
+                        return;
                     }else {
                         System.out.println("Opção invalida, voltando");
-                        loop();
+                        return;
                     }
                     break;
                 case "Aprovado":
