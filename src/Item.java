@@ -18,7 +18,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item [descricao=" + descricao + ", valor=" + valor + "]";
+        return ("==================================\n" + "Item " + descricao + "\nValor:" + valor + "\n==================================");
     }
 
     

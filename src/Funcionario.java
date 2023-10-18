@@ -7,7 +7,7 @@ public class Funcionario extends Usuario{
 
     @Override
     public String toString() {
-        return "Funcionario [departamento=" + this.getDepartamento() + "]";
+        return ("==================================\n" + "Tipo: Funcionário" + "\nID: " + this.getId() + "\nNome: " + this.getNome() + "\nDepartamento: " + this.getDepartamento().getNome() + "\n==================================");
     }
     
 }

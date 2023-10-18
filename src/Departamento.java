@@ -24,7 +24,7 @@ public class Departamento {
 
     @Override
     public String toString() {
-        return "Departamento [nome=" + nome + ", descricao=" + descricao + ", valorMaximo=" + valorMaximo + "]";
+        return ("==================================\n" + "Departamento " + this.nome + "\nDescrição: " + this.descricao + "\nValor máximo: " + this.valorMaximo + "\n==================================");
     }
 
     

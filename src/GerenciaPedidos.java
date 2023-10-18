@@ -121,12 +121,9 @@ public class GerenciaPedidos {
 
         System.out.println("Detalhes do pedido de maior valor ainda aberto:");
         System.out.println("Código: " + pMaior.getCodigo());
-        System.out.println("Funcionário: " + pMaior.getUsuario());
-        System.out.println("Departamento: " + pMaior.getDepartamento());
+        System.out.println("Funcionário: " + "\nID: " + pMaior.getUsuario().getId() + "\nNome: " + pMaior.getUsuario().getNome());
+        System.out.println("Departamento: " + pMaior.getDepartamento().getNome());
         System.out.println("Data abertura: " + pMaior.getDataAbertura());
-        System.out.println("Data conclusão: " + pMaior.getDataConclusao());
-        System.out.println("Status: " + pMaior.getStatus());
-        System.out.println("Itens: " + pMaior.getItens());
         System.out.println("Valor total: " + pMaior.getValorTotal());
     }
 

@@ -72,7 +72,7 @@ public class Pedido {
 
     @Override
     public String toString() {
-        return ("Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura);
+        return ("==================================\n" + "Pedido " + codigo + "\nStatus: " + status + "\nValor: " + valorTotal + "\nData de abertura: " + dataAbertura + "\nFuncionario: \n" + "ID: " + this.getUsuario().getId() + "\nNome: " + this.getUsuario().getNome() +"\n==================================");
     }
 
     

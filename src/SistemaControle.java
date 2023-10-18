@@ -466,9 +466,7 @@ public class SistemaControle {
     public void listaPedidos() {
         ArrayList<Pedido> pedidos = gerenciaPedidos.getPedidos();
         for(Pedido p : pedidos) {
-            System.out.println("==================================\n"
-             + p + "\n"
-             + "==================================");
+            System.out.println(p);
         }
     }
 }
