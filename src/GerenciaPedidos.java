@@ -205,6 +205,7 @@ public class GerenciaPedidos {
             if (p.getUsuario().equals(u)) {
                 if (p.getStatus().equals("Aberto")) {
                     pedidos.remove(p);
+                    System.out.println("Pedido excluido com sucesso");
                     return true;
                 } else {
                     System.out.println("Apenas pedidos ainda abertos podem ser excluidos");
