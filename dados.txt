@@ -1,0 +1,168 @@
+RH
+Departamento de recursos humanos responsável pelo gerenciamento dos colaboradores da empresa.
+10000
+Financeiro
+Departamento Financeiro responsável pelo controle de contas a pagar e receber, gestão de impostos, controle de riscos e etc.
+20000
+Engenharia
+Departamento de Engenharia responsável por coordenar o desenvolvimento dos projetos.
+5000
+Manutenção
+Departamento de Manutenção responsável por programar o trabalho de forma eficiente e garantir a qualidade dos produtos e serviços.
+7000
+Operacional
+Departamento Operacional responsável por realizar as atividades da empresa.
+9000
+-1
+Gabriel Saldanha
+GS
+ADM
+Operacional
+Guilherme Kuhn
+GK
+FUNC
+Operacional
+Gabriel Petry
+GP
+FUNC
+Operacional
+Maria Silva
+MS
+ADM
+RH
+João Santos
+JS
+FUNC
+RH
+Ana Pereira
+AP
+FUNC
+RH
+Athos Puna
+AP
+ADM
+Financeiro
+Carla Ferreira
+CF
+FUNC
+Financeiro
+Antônio Oliveira
+AO
+FUNC
+Financeiro
+Luísa Martins
+LM
+ADM
+Engenharia
+Rui Costa
+RC
+FUNC
+Engenharia
+Sofia Mendes
+SM
+FUNC
+Engenharia
+Tiago Alves
+TA
+ADM
+Manutenção
+Marta Rodrigues
+MR
+FUNC
+Manutenção
+José Gomes
+JG
+FUNC
+Manutenção
+-1
+Celular
+1299.99
+Cadeira
+149.99
+Mesa
+199.99
+Mouse
+29.99
+Teclado
+49.99
+Monitor
+249.99
+Laptop
+799.99
+Impressora
+129.99
+Fone de Ouvido
+99.99
+Webcam
+59.99
+-1
+1
+Celular
+-1
+25
+1
+Cadeira
+Laptop
+Celular
+-1
+10
+2
+Mesa
+Mouse
+Teclado
+Monitor
+Celular
+-1
+5
+3
+Fone de Ouvido
+Webcam
+-1
+20
+4
+Impressora
+Teclado
+-1
+15
+5
+Laptop
+Mouse
+Monitor
+Celular
+-1
+0
+6
+Cadeira
+Fone de Ouvido
+Mouse
+Monitor
+Laptop
+Celular
+-1
+8
+7
+Mesa
+Impressora
+Teclado
+Webcam
+-1
+12
+8
+Cadeira
+Teclado
+Celular
+-1
+4
+9
+Fone de Ouvido
+Mouse
+Celular
+-1
+18
+10
+Impressora
+Monitor
+Celular
+-1
+3
+-1
