@@ -5,6 +5,7 @@ import java.nio.charset.Charset;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Random;
 import java.util.Scanner;
 import java.io.FileReader;
 
@@ -348,6 +349,13 @@ public class SistemaControle {
             in.nextLine();
             Pedido p  = new Pedido(gerenciaPedidos.getUltimoCodigo(), u, d, data, itens);
             gerenciaPedidos.adicionaPedido(p);
+            Random random = new Random();
+            int nAleatorio = random.nextInt(0, 5);
+            if(nAleatorio == 1) {
+                p.setStatus("Aprovado");
+            }else if(nAleatorio == 2) {
+                p.setStatus("Reprovado");
+            }
             codigo = in.nextInt();
             in.nextLine();
 
