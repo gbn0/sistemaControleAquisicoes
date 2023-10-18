@@ -107,6 +107,10 @@ public class SistemaControle {
                             in.nextLine();
                             switch(opcao4) {
                                 case 1:
+                                    if(!(usuario instanceof Administrador)) {
+                                        System.out.println("Você não tem permissão para acessar essa função");
+                                        break;
+                                    }
                                     System.out.println("Digite a data inicial no formato: ano-mes-dia");
                                     LocalDate inic = LocalDate.parse(in.nextLine());
                                     System.out.println("Digite a data final no formato: ano-mes-dia");
@@ -117,6 +121,10 @@ public class SistemaControle {
                                     }
                                     break;
                                 case 2:
+                                    if(!(usuario instanceof Administrador)) {
+                                        System.out.println("Você não tem permissão para acessar essa função");
+                                        break;
+                                    }
                                     System.out.println("Digite o id do funcionário solicitante");
                                     int id = in.nextInt();
                                     in.nextLine();
@@ -131,6 +139,10 @@ public class SistemaControle {
                                     }
                                     break;
                                 case 3:
+                                    if(!(usuario instanceof Administrador)) {
+                                        System.out.println("Você não tem permissão para acessar essa função");
+                                        break;
+                                    }
                                     System.out.println("Digite a descrição do item");
                                     String desc = in.nextLine();
                                     Item i = gerenciaItens.pesquisaItem(desc);
